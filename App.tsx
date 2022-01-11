@@ -20,7 +20,15 @@ export default function App() {
         <Navigation colorScheme={colorScheme} />
         <StatusBar />
         <View style={styles.container}>
-          <MapView style={styles.map} />
+          <MapView 
+            style={styles.map} 
+            region={{
+              latitude: 43.47453,
+              longitude: 5.37847,
+              latitudeDelta: 0.015,
+              longitudeDelta: 0.0121,
+            }}
+          />
         </View>
       </SafeAreaProvider>
     );
