@@ -24,23 +24,31 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
   }, []);
 
   let text = 'Waiting..';
+  let coords = '';
+  let lat = '';
+  let long = '';
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
-    text = JSON.stringify(location);
+    text = JSON.stringify(location); //Toutes les info de géolocalisation
+    coords = JSON.stringify(location["coords"]);
+    lat = parseFloat(JSON.stringify(location["coords"]["latitude"]));
+    long = parseFloat(JSON.stringify(location["coords"]["longitude"]));
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <Text style={styles.title}>{text}</Text>
+      <Text style={styles.title}>Latitude :</Text>
+      <Text style={styles.title}>{lat}</Text>
+      <Text style={styles.title}>Longitude :</Text>
+      <Text style={styles.title}>{long}</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <View style={styles.container}>
           <MapView 
             style={styles.map} 
             region={{
-              latitude: 43.47453,
-              longitude: 5.37847,
+              latitude: lat,
+              longitude: long,
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}
