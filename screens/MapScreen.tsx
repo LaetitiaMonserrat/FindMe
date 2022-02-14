@@ -65,12 +65,12 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
           />
           <Marker coordinate = {{latitude: lat+0.0018,longitude: long+0.0013}}
            pinColor = {"purple"}
-           title={"Maya"}
+           title={"Lucas"}
            description={"En ligne"}
           />
           <Marker coordinate = {{latitude: lat-0.0025,longitude: long-0.0019}}
            pinColor = {"purple"}
-           title={"Pablo"}
+           title={"David"}
            description={"Dernière connexion il y a 40 min"}
           />
         </MapView>
