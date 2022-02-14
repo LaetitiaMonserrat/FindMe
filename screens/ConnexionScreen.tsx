@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   connexionText: {
+    color:"white",
     textAlign: "center",
   },
   inscription: {
