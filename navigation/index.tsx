@@ -22,6 +22,7 @@ import MapScreen from "../screens/MapScreen";
 import { RootStackParamList, RootTabParamList } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
 import FriendsScreen from "../screens/FriendsScreen";
+import ChatroomScreen from "../screens/ChatroomScreen";
 
 export default function Navigation({
   colorScheme,
@@ -77,7 +78,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Chatroom"
-        component={MapScreen}
+        component={ChatroomScreen}
         options={{
           title: "Discussion",
           tabBarIcon: ({ color, size }) => (
