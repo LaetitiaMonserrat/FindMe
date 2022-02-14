@@ -21,12 +21,14 @@ export type RootStackParamList = {
   Modal: undefined;
   NotFound: undefined;
   Connexion: undefined;
+  TabOne: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, Screen>;
 
 export type RootTabParamList = {
+  Map: undefined;
   TabOne: undefined;
   TabTwo: undefined;
   Connexion: undefined;

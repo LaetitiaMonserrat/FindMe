@@ -10,9 +10,7 @@ import { StyleSheet } from "react-native";
 var width = Dimensions.get("screen").width;
 var height = Dimensions.get("screen").height;
 
-export default function ConnectionScreen({
-  navigation,
-}: RootTabScreenProps<"Connexion">) {
+export default function ConnectionScreen() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,7 +19,7 @@ export default function ConnectionScreen({
   const routeChange = (username: string, password: string) => {
     login(username, password);
     if (checkLogged()) {
-      navigate.navigate("Modal");
+      navigate.navigate("Root");
     }
   };
 
@@ -101,7 +99,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   connexionText: {
-    color:"white",
+    color: "white",
     textAlign: "center",
   },
   inscription: {
