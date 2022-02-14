@@ -21,7 +21,7 @@ export default function ConnectionScreen({
   const routeChange = (username: string, password: string) => {
     login(username, password);
     if (checkLogged()) {
-      navigate.navigate("Modal");
+      navigate.navigate("TabOne");
     }
   };
 
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
   },
   connexionText: {
-    color:"white",
+    color: "white",
     textAlign: "center",
   },
   inscription: {

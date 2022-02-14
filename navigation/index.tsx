@@ -3,8 +3,9 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { StyleSheet } from "react-native";
 import {
   NavigationContainer,
   DefaultTheme,
@@ -18,7 +19,7 @@ import useColorScheme from "../hooks/useColorScheme";
 import ConnexionScreen from "../screens/ConnexionScreen";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import MapScreen from "../screens/MapScreen";
 import {
   RootStackParamList,
   RootTabParamList,
@@ -34,7 +35,7 @@ export default function Navigation({
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === "light" ? DarkTheme : DefaultTheme}
+      theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
     >
       <RootNavigator />
     </NavigationContainer>
@@ -49,17 +50,29 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Connexion"
-        component={ConnexionScreen}
-        options={{ headerShown: false }}
-      />
+    <Stack.Navigator
+      screenOptions={{
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+      }}
+    >
       <Stack.Screen
         name="Root"
         component={BottomTabNavigator}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="Connexion"
+        component={ConnexionScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen name="TabOne" component={MapScreen} />
+
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
@@ -80,42 +93,38 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
+
   return (
     <BottomTab.Navigator
+      screenOptions={{ tabBarStyle: { backgroundColor: "white" } }}
       initialRouteName="Connexion"
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
-      }}
     >
       <BottomTab.Screen
-        name="Connexion"
-        component={ConnexionScreen}
-        options={({ navigation }: RootTabScreenProps<"Connexion">) => ({
-          title: "Connexion",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate("Modal")}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
-            >
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
+        name="TabOne"
+        component={MapScreen}
+        options={{
+          title: "Amis a proximité",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="account-group"
+              color={color}
+              size={size}
+            />
           ),
-        })}
+        }}
       />
       <BottomTab.Screen
         name="TabTwo"
-        component={TabTwoScreen}
+        component={MapScreen}
         options={{
-          title: "Tab Two",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: "Discussion",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="comment-account-outline"
+              color={color}
+              size={size}
+            />
+          ),
         }}
       />
     </BottomTab.Navigator>
