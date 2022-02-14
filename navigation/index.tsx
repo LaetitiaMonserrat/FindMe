@@ -3,9 +3,9 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { StyleSheet } from "react-native";
+
 import {
   NavigationContainer,
   DefaultTheme,
@@ -14,18 +14,14 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
 import { ColorSchemeName, Pressable } from "react-native";
-import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import ConnexionScreen from "../screens/ConnexionScreen";
-import ModalScreen from "../screens/ModalScreen";
+import ModalScreen from "../screens/FriendsScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import MapScreen from "../screens/MapScreen";
-import {
-  RootStackParamList,
-  RootTabParamList,
-  RootTabScreenProps,
-} from "../types";
+import { RootStackParamList, RootTabParamList } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
+import FriendsScreen from "../screens/FriendsScreen";
 
 export default function Navigation({
   colorScheme,
@@ -66,8 +62,8 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="TabOne"
-        component={MapScreen}
+        name="Friends"
+        component={FriendsScreen}
         options={{
           title: "Amis a proximité",
           tabBarIcon: ({ color, size }) => (
@@ -80,7 +76,7 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Chatroom"
         component={MapScreen}
         options={{
           title: "Discussion",
