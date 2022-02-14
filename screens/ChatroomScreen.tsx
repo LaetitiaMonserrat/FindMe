@@ -26,7 +26,7 @@ export default function ChatroomScreen() {
           style={styles.input}
           onChangeText={(text) => setMessage(text)}
           value={message}
-          placeholder="Nom d'utilisateur"
+          placeholder="Message"
         />
         <MaterialCommunityIcons style={styles.arrow} name="arrow-right" />
       </View>
