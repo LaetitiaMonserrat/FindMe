@@ -8,7 +8,6 @@ import { useState } from "react";
 import { StyleSheet } from "react-native";
 
 var width = Dimensions.get("screen").width;
-
 var height = Dimensions.get("screen").height;
 
 export default function ConnectionScreen({
